@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Think of IT </title>
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+*{box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #fff000;
+  padding: 20px;
+}
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+
+button.accordion.active,
+button.accordion:hover {
+
+    background-color: #ddd;
+}
+
+
+button.accordion:after {
+
+/* Unicode character for "plus" sign
+(+) is '\02795' */ 
+
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+
+button.accordion.active:after {
+
+/* Unicode character for "minus" sign
+(-) is '\2796' */ 
+
+    content: "\2796";
+}
+
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px;
+}
+
+</style>
+    <link rel="icon" href="https://www.thinkofit.org/logo.png"/>
+    <!--Boostrap cdn-->
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!--FontAwsome cdn-->
+<script src="https://kit.fontawesome.com/3f42a94012.js" crossorigin="anonymous"></script>
+
+<!--Slick slider-->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!--Jquery-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<!--google fonts-->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Gugi&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sofia&display=swap');
+    </style>
+
+<!--Custom Stylesheet-->
+
+</head>
+<body>
+
+    <!--header-->
+<header>
+    <div class="container">
+        
+            <div class="col-md-4 col-12 tex-center">
+                <h2 class="my-md-3 site-title text-yellow">
+                  Think of IT Foundation  
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNav" aria-controls="navbarNav"
+             aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Youth-Led TOI</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Join The Movement </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="About.html">Contact</a>
+                  </li>
+				  <li class="nav-item">
+                   <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm" class="px-2">Login</a>
+                  </li>
+				   <li class="nav-item">
+                    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm" class="px-1">Create an Account</a>
+                  </li>
+                </ul>
+            </div>
+
+            
+          </nav>
+    </div>
+</header>
+<!--/header-->
+
+<!--main section-->
+
+
+   
+    <div class="container-fluid p-0">
+        <div class="site-slider">
+            <div class="slider-one">
+                <div>
+                   <div id="slider">
+    <figure>
+       <marquee>
+       <img src="https://www.thinkofit.org/media/slider1.jpg" alt="5" border="1" height="100px" width="200px">    
+      <img src="https://www.thinkofit.org/media/slider2.jpg" alt="6" border="1" height="100px" width="200px">
+      <img src="https://www.thinkofit.org/media/slider4.jpg" alt="4" border="1" height="100px" width="200px">
+      <img src="https://www.thinkofit.org/media/rad2.jpg" alt="4" border="1"height="100px" width="200px">   
+</marquee>
+    </figure>
+       </div> 
+    </div> 
+    <br/>
+    <br/>
+<hgroup>
+<h3 class="font-weight-bold mt-3">LET'S THINK OF IT!</h3>
+<p class="text-black-50 mt-3">Be a part of the largest community of youth changemakers.
+  Get your voice heard. Lead the change for an impact.
+  Channelize dreams and steer young minds with YOUTH LEADERSHIP to create an impact by taking the road less travelled.</p>
+</hgroup>
+<hgroup>
+<h3 class="font-weight-bold mt-3">MAKE YOUR CITY COUNT</h3>
+<p class="text-black-50 mt-3">Tune the present and let the fire of the youth in your city burst into a spectacular flare by registering your city chapter.</p>
+</hgroup>
+<br/>
+<div class="container">
+<input type="submit" value="Get Started "> ===>
+</div>
+<br/>
+<br/>
+<h1 align="center">With Think Of It</h1>
+<br/>
+<br/>
+<button class="accordion">REACH TO TEACH
+</button>
+
+<div class="panel">
+
+<p>
+It’s high time that the suppressed talents get uplifted, education be skill-enriched and young crops get nurtured, aligned with their regular curriculum.
+ TOI attempts to promote holistic development and provide formative skill-development modules and opportunities.
+ <br>
+ <ul>
+ Our fellows encourage the kids to:
+ <li>Focus on their interest domain.</li>
+ 
+ <li>Experience hands-on and seek to provide them with the right exposure.</li>
+ 
+ <li>Create a sustainable global impact.</li>
+</ul>
+</p>
+
+</div>
+
+<button class="accordion">RAISE A DREAM</button>
+<div class="panel">
+
+<p>
+ Join hands and help TOI to Raise a Dream of impoverished talented children by providing them the access to your platform/network and with continuous assistance from our fellows. Help TOI raise a million dreams.
+ Mentor a dream.
+ <ul>
+ <li> Help the talented to showcase their skills.</li>
+  <li> Transit them with your platform, connect dreams with reality.<li>
+ <li> Refine the talent with your guidance and support.</li>
+ <li>Complete your social responsibility.</li>
+ </ul>
+
+</div>
+
+<button class="accordion">Enroll
+</button>
+<div class="panel">
+
+<p>Register yourself to be the greatest change-maker who contributes towards social responsibility.</p>
+
+</div>
+
+<button class="accordion">Evaluate
+</button>
+<div class="panel">
+
+<p>Think of the current issues that are blockers to the objectives and hurdles to the overall development.</p>
+</div>
+
+<button class="accordion">Engage
+</button>
+<div class="panel">
+
+<p>Youth is the best solution for the problems. Engage yourself to think through it and eliminate the hurdles assessed.</p>
+
+</div>
+
+<button class="accordion">Elevate
+</button>
+<div class="panel">
+
+<p>When you are into it, know how to act and handle it. Just feel the drive, be a touchstone to drive others!</p>
+</div>
+
+<script>
+
+var acc = document
+.getElementsByClassName("accordion");
+
+var i;
+
+for (i = 0; i < acc.length; i++) {
+ acc[i].onclick = function(){
+  this.classList.toggle("active");
+  this.nextElementSibling.classList
+  .toggle("show");
+  }
+}
+
+</script>
+
+                    <h3>Get In Touch </h3>
+
+<div class="container">
+  <form >
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="subject">Message</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+</form>
+<h3> Address</h3>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.666853134982!2d73.97512557836458!3d18.570692733682954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c39c7792d5cb%3A0xc23f3850ce1dea62!2sSavannah%202%20Co-operative%20Housing%20Society%20Limited!5e0!3m2!1sen!2sin!4v1622777457975!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+ 
+</div>
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    
+			
+	
+
+
+    <!--Modal-->
+
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="email" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" id="defaultForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--/Modal-->
+
+<!--Register Modal-->
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="email" id="orangeForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" id="orangeForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-deep-orange">Sign up</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Register Modal-->
+</main>
+<!--/main section-->
+
+<footer class="page-footer font-small blue-grey lighten-5 p-0">
+
+    <div style="background-color: #45ccb8;">
+      <div class="container">
+ 
+        <!-- Grid row-->
+        <div class="row py-4 d-flex align-items-center">
+ 
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+            <h6 class="mb-0">By The Youth, For The Youth!</h6>
+          </div>
+          
+ 
+      </div>
+    </div>
+ 
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
+ 
+      <!-- Grid row -->
+      <div class="row mt-3 dark-grey-text">
+ 
+        <!-- Grid column -->
+        
+        <!-- Grid column -->
+ 
+        <!-- Grid column -->
+        
+ 
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+ 
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a class="dark-grey-text" href="#!">Blogs</a>
+          </p>
+          <p>
+            <a class="dark-grey-text" href="#!">Privacy Policy</a>
+          </p>
+          <p>
+            <a class="dark-grey-text" href="#!">Terms and Condition</a>
+          </p>
+          <p>
+            <a class="dark-grey-text" href="#!">Disclaimer</a>
+          </p>
+ 
+        </div>
+        <!-- Grid column -->
+ 
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+ 
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Contact</h6>
+          <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <i class="fas fa-home mr-3"></i> 403, K Savannah, Wagholi, Pune-412307</p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i> <a href="mailto">hello@thinkofit.org</p></a>
+         
+        </div>
+        <!-- Grid column -->
+ 
+      </div>
+      <!-- Grid row -->
+ 
+    </div>
+    <!-- Footer Links -->
+ 
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+      <a class="dark-grey-text" href="#"> Think of IT Foundation</a>
+    </div>
+    <!-- Copyright -->
+ 
+  </footer>
+  <!-- Footer -->
+    </div>
+
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="./javascript/index.js"></script>
+</body>
+</html> 
